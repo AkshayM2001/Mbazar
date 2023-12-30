@@ -1,0 +1,100 @@
+<!--  ================ Static files ================= */  -->
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+   <!--  ================ FAVICON ================= */  -->
+   <link rel='stylesheet' 
+   href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+
+   <!--  ================ SWIPER CSS ================= */  -->
+   <link
+   rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+ />
+
+   <!--  ================ CSS ================= */  -->
+   <link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
+
+    <title>{% block title %}{% endblock  %}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__top">
+            <div class="header__container container">
+                <div class="header__contact">
+                    <span>+91 9370664563</span>
+                    <span>Our location</span>
+                </div>
+                <p class="header__alert-news">
+                    Super Value Deals - Save more with coupons
+                </p>
+
+                <a href="loginRegister" class="header__top-action">
+                    Log In / Sign up
+                </a>
+            </div>
+        </div>
+
+        <nav class="nav container">
+            <a href="home" class="nav__logo">
+                <img src="/static/img/logo.png.jpg" alt="" class="nav__logo-img">
+            </a>
+
+            <div class="nav__menu" id="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="home" class="nav__link action-link">Home</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="shop" class="nav__link">Shop</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="account" class="nav__link">My Account</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="compare" class="nav__link">Compare</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="loginRegister" class="nav__link">Login</a>
+                    </li>
+                </ul>
+            
+                <div class="header__search">
+                    <input type="text" placeholder="Search for items..." class="form__input">
+
+                    <button class="search__btn"> 
+                        <img style="height: auto; width: 29px;" src="/static/img/serc.png" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <div class="header__user-actions">
+                <a href="favourite" class="header__action-btn">
+                    <img src="/static/img/icon-heart.svg" alt="">
+                    <span class="count">3</span>
+                </a>
+                <a href="cart" class="header__action-btn">
+                    <img  src="/static/img/icon-cart.svg" alt="">
+                    <span class="count">3</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    {% block body %}
+
+
+    {% endblock %}
+
+
+  <!--  ================ SWIPER JS ================= */  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!--  ================ MAIN JS ================= */  -->
+
+  <script src="{% static "app.js" %}"></script>
+
+</body>
+</html>
