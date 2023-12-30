@@ -495,8 +495,37 @@ input {
     padding: 0.25rem .625rem;
     border-radius: 2.5rem;
     font-size: var(--tiny-font-size);
-    font-weight: var(--weight-500);
+    /* font-weight: var(--weight-500); */
+}
 
+.product__badge.light-pink {
+    background-color: hsl(341, 100%, 73%);
+}
+.product__badge.light-green {
+    background-color: hsl(155, 20%, 67%);
+}
+.product__badge.light-orange {
+    background-color: hsl(24, 100%, 73%);
+}
+
+.product__badge.light-blue {
+    background-color: hsl(202, 53%, 76%);
+}
+.product__content {
+    padding: 0 1.25rem 1.125rem;
+}
+.product__category {
+    color: var(--text-color-light);
+    font-size: var(--smaller-font-size);
+}
+
+.product__title {
+    font-size: var(--normal-font-size);
+    margin-block: 0.75rem 0.5rem;
+}
+.product__rating {
+    color: hsl(42, 100%, 50%);
+    margin-bottom: 0.75rem;
 }
 
 
