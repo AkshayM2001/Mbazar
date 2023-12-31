@@ -27,3 +27,29 @@ var swiperCategories = new Swiper('.categories__container', {
 
     },
 });
+
+
+/* ================ SWIPER CATEGORIES ================= */
+
+/* ================ PRODUCT TABS ================= */
+const tabs = document.querySelectorAll('[data-target]'),
+tabContent = document.querySelectorAll('[content]');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.target);
+        // console.log(target)
+        tabContent.forEach((tabContent) => {
+            tabContent.classList.remove('active-tab');
+        });
+        target.classList.add('active-tab');
+
+        tabs.forEach((tab) => {
+            tab.classList.remove('active-tab');
+        });
+
+        tab.classList.add('active-tab');
+    });
+
+});
+
