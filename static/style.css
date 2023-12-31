@@ -42,7 +42,7 @@
     --weight-600:  600;
     --weight-700:  700;
 
-    /* ================ TRANSITION T ================= */
+    /* ============================================================ TRANSITION ==================================== */
     --transition: cubic-bezier(0, 0, 0.05, 1);
 
 }
@@ -67,7 +67,7 @@
 */
 
 
-/* ================ BASE ================= */
+/* ====================================================== BASE =================================================== */
 
 * {
     margin: 0;
@@ -121,7 +121,7 @@ input {
 
 
 
-/* ================ RESUABLE CSS CLASSES ================= */
+/* =============================================== RESUABLE CSS CLASSES ================================================== */
 .container {
     /* background-color: var(--first-color); */
     max-width: 1320px;
@@ -178,7 +178,7 @@ input {
 
 
 
-/* ================ HEADER AND NAV ================= */
+/* ============================================== HEADER AND NAV =================================================== */
 
 .header__top{
     background-color: var(--first-color-alt);
@@ -297,7 +297,7 @@ input {
 
 
 
-/* ================ HOME ================= */
+/* =================================================== HOME ========================================================== */
 
 .home__container{
     grid-template-columns: 5fr 7fr;
@@ -308,7 +308,7 @@ input {
     font-size: var(--large-font-size);
 }
 .home__subtitle {
-    font-family: var(--second-color);
+    font-family: var(--second-font);
     font-weight: var(--weight-600);
     margin-bottom: 1rem;
     display: block;
@@ -331,7 +331,7 @@ input {
     justify-self: flex-end;
 }
 
-/* ================ BUTTONS ================= */
+/* ======================================================= BUTTONS ==================================================== */
 
 .btn {
     display: inline-block;
@@ -352,8 +352,20 @@ input {
     background-color: transparent;
     color: var(--first-color);
 }
-/* ================ CATEGORIES ================= */
-.category {
+
+.btn--md {
+    font-family: var(--body-font);
+    height: 45px;
+    line-height: 42px;
+}
+
+
+
+
+
+
+/* ==================================================== CATEGORIES ============================================ */
+.categories {
     overflow: hidden;
 }
 
@@ -412,7 +424,7 @@ input {
     max-height: 16rem;
 }
 
-/* ================ PRODUCT ================= */
+/* =========================================== PRODUCT============================= ================= */
 .tab__btns {
     display: flex;
     column-gap: 0.75rem;
@@ -628,11 +640,11 @@ input {
 .deals__container {
     grid-template-columns: repeat(2, 1fr);
 }
-.deals_item:nth-child(1) {
-    background-image: url(./static/img/deals-1.jpg);
+.deals__item:nth-child(1) {
+    background-image: url(/static/img/deals-1.jpg);
 }
-.deals_item:nth-child(2) {
-    background-image: url(./static/img/deals-2.png);
+.deals__item:nth-child(2) {
+    background-image: url(/static/img/deals-2.png);
 }
 
 .deals__item {
@@ -678,7 +690,7 @@ input {
 }
 
 .countdown__amount {
-    /* position: relative; */
+    position: relative;
 }
 
 .countdown__amount::after {
@@ -700,6 +712,30 @@ input {
     font-size: var(--large-font-size);
     
 }
+
+.unit {
+    font-size: var(--small-font-size);
+    display: block;
+}
+
+.deals__btn .btn {
+    background-color: transparent;
+    color: var(--first-color);
+}
+
+
+/*================================= NEW ARRIVALS =======================================================*/
+
+.new__arrivals {
+    overflow: hidden;
+}
+
+
+
+
+
+
+
 
 
 
