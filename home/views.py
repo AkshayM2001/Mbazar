@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .form import CustomerForm
 
 # Create your views here.
 
@@ -11,8 +12,8 @@ def shop(request):
     return render(request, "shop.html", context)
 
 def loginRegister(request):
-    context = {}
-    return render(request, "login-resister.html", context)
+    formset = CustomerForm()
+    return render(request, "login-resister.html", {'formset':formset})
 
 def account(request):
     context = {}
