@@ -1,15 +1,16 @@
 {% extends  "base.html" %}
 {% load static %}
-{% block title %}SignUP/SignIn{% endblock  %}
+{% block title %}SignIn{% endblock  %}
   
 
 {% block body %}
 
-<form action="POST" class="form signin" novalidate>
+<form method="post" class="form signin" novalidate>
     {% csrf_token %}
     <h2 class="heading-lg">Sign In</h2>
     {{ formset.as_p }}
-    <button type="submit">Register</button>
+    <button type="submit">Login</button>
+    <p class="register-text">Not account yet <a href="register" class="register">Register</a></p>
 </form>
 
 {% endblock %}

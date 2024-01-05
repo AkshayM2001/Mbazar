@@ -1,0 +1,16 @@
+{% extends  "base.html" %}
+{% load static %}
+{% block title %}SignUP{% endblock  %}
+  
+
+{% block body %}
+
+<form method="post" class="form signup" novalidate>
+    {% csrf_token %}
+    <h2 class="heading-lg">Sign Up</h2>
+    {{ formset.as_p }}
+    <button type="submit">Register</button>
+    <p class="login-text">Already have account <a href="login-resister" class="login-btn">Login</a></p>
+</form>
+
+{% endblock %}
