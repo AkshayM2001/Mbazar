@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .form import CustomerForm
-from django.http import HttpResponseRedirect
+from .form import LoginForm
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -14,7 +15,24 @@ def shop(request):
     return render(request, "shop.html", context)
 
 def loginRegister(request):
-    return render(request, "register.html")
+    if request.method == 'POST':
+        logset = LoginForm(request.Post)
+        uname = request.POST.get('username')
+        # mail = request.POST.get('email')
+        # phone = request.POST.get('mobile')
+        ps = request.POST.get('password')
+        ps1 = request.POST.get('password1')
+
+        added_user = User.objects.create_user(uname, ps)
+        added_user.save()
+        if logset.is_valid():
+            
+            logset.save()
+            return HttpResponseRedirect("/loginRegister")
+
+    else:
+        logset = LoginForm()
+    return render(request, "login-resister.html", {'logset':logset})
 
 def register(request):
     if request.method == 'POST':
@@ -25,18 +43,18 @@ def register(request):
         ps = request.POST.get('password')
         ps1 = request.POST.get('password1')
 
-        new_user = User.objects.create_user(uname, mail, phone, ps)
-        new_user.save()
+        # if formset.is_valid(): 
+        #     formset.save()
+        #     return HttpResponseRedirect("/loginRegister")
+        if ps!=ps1:
+            # messages.error(request,'Password and Confirm Password does not match')
+            HttpResponse("Your password is not same")
+        else:
+            new_user = User.objects.create_user(uname, mail, phone, ps)
+            new_user.save()
+            return HttpResponseRedirect("/loginRegister")
 
-
-        if formset.is_valid():
-            
-            formset.save()
-            return HttpResponseRedirect("/home")
-
-    else:
-        formset = CustomerForm()
-        return render(request, "login-resister.html", {'formset':formset})
+    return render(request, "register.html", {'formset':formset})
 
 def account(request):
     context = {}
