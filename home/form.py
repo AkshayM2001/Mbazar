@@ -5,7 +5,7 @@ from .models import Login
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        fields = ['name', 'email', 'mobile', 'password', 'password1']
+        fields = ['name', 'mobile', 'password', 'password1']
         
 class LoginForm(ModelForm):
     class Meta:

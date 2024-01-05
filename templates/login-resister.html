@@ -4,8 +4,8 @@
   
 
 {% block body %}
-<div class="login-form">
-<form method="post" class="form signin" novalidate>
+<div class="login-form" >
+<form method="POST" class="form signin" novalidate>
     {% csrf_token %}
     <h2 class="heading-lg">Sign In</h2>
     {{ logset.as_p }}
@@ -13,4 +13,5 @@
 </form>
 <p class="register-text">Not account yet <a href="Register" class="register">Register</a></p>
 </div>
+
 {% endblock %}

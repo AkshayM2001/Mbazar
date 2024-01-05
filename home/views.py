@@ -3,8 +3,12 @@ from .form import CustomerForm
 from .form import LoginForm
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+@login_required(login_url='home')
 
 def home(request):
     context = {}
@@ -16,29 +20,32 @@ def shop(request):
 
 def loginRegister(request):
     if request.method == 'POST':
-        logset = LoginForm(request.Post)
+        logset = LoginForm(request.POST)
         uname = request.POST.get('username')
         # mail = request.POST.get('email')
         # phone = request.POST.get('mobile')
         ps = request.POST.get('password')
-        ps1 = request.POST.get('password1')
-
-        added_user = User.objects.create_user(uname, ps)
-        added_user.save()
-        if logset.is_valid():
+        # ps1 = request.POST.get('password1')
+        userA = authenticate(request, username = uname, password = ps)
+        if userA is not None:
+            login(request, userA)
+            return HttpResponseRedirect('home')
             
-            logset.save()
-            return HttpResponseRedirect("/loginRegister")
-
     else:
         logset = LoginForm()
     return render(request, "login-resister.html", {'logset':logset})
+
+def Logout(request):
+    logout(request)
+    return HttpResponse('loginRegister')
+
+
 
 def register(request):
     if request.method == 'POST':
         formset = CustomerForm(request.POST)
         uname = request.POST.get('name')
-        mail = request.POST.get('email')
+        # mail = request.POST.get('email')
         phone = request.POST.get('mobile')
         ps = request.POST.get('password')
         ps1 = request.POST.get('password1')
@@ -50,11 +57,12 @@ def register(request):
             # messages.error(request,'Password and Confirm Password does not match')
             HttpResponse("Your password is not same")
         else:
-            new_user = User.objects.create_user(uname, mail, phone, ps)
+            new_user = User.objects.create_user(uname, phone, ps)
             new_user.save()
             return HttpResponseRedirect("/loginRegister")
-
-    return render(request, "register.html", {'formset':formset})
+    else:
+        formset=CustomerForm()
+        return render(request, "register.html", {'formset':formset})
 
 def account(request):
     context = {}
