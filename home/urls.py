@@ -20,11 +20,11 @@ from home import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('', views.home),
+    # path('', views.home),
     path('home', views.home),
     path('shop', views.shop),
     path('loginRegister', views.loginRegister),
-    path('logout', views.Logout),
+    # path('logout', views.Logout),
     path('Register', views.register),
     path('account', views.account),
     path('favourite', views.favourite),

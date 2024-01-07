@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .form import CustomerForm
+from .form import LoginForm
+from .form import SignUpfm
+from django.contrib.auth.forms import UserCreationForm
 from .form import LoginForm
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User
@@ -8,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-@login_required(login_url='home')
+@login_required(login_url='/home')
 
 def home(request):
     context = {}
@@ -21,15 +23,19 @@ def shop(request):
 def loginRegister(request):
     if request.method == 'POST':
         logset = LoginForm(request.POST)
+
+        # if logset.is_valid(): 
+        #     logset.save()
+        #     return HttpResponseRedirect("/loginRegister")
         uname = request.POST.get('username')
         # mail = request.POST.get('email')
-        # phone = request.POST.get('mobile')
+        # # phone = request.POST.get('mobile')
         ps = request.POST.get('password')
-        # ps1 = request.POST.get('password1')
+        # # ps1 = request.POST.get('password1')
         userA = authenticate(request, username = uname, password = ps)
         if userA is not None:
             login(request, userA)
-            return HttpResponseRedirect('home')
+            return HttpResponseRedirect('/home')
             
     else:
         logset = LoginForm()
@@ -43,26 +49,29 @@ def Logout(request):
 
 def register(request):
     if request.method == 'POST':
-        formset = CustomerForm(request.POST)
-        uname = request.POST.get('name')
-        # mail = request.POST.get('email')
-        phone = request.POST.get('mobile')
-        ps = request.POST.get('password')
-        ps1 = request.POST.get('password1')
+        formset = SignUpfm(request.POST)
+    #     uname = request.POST.get('name')
+    #     # mail = request.POST.get('email')
+    #     phone = request.POST.get('mobile')
+    #     ps = request.POST.get('password')
+    #     ps1 = request.POST.get('password1')
 
-        # if formset.is_valid(): 
-        #     formset.save()
-        #     return HttpResponseRedirect("/loginRegister")
-        if ps!=ps1:
-            # messages.error(request,'Password and Confirm Password does not match')
-            HttpResponse("Your password is not same")
-        else:
-            new_user = User.objects.create_user(uname, phone, ps)
-            new_user.save()
+        if formset.is_valid(): 
+            formset.save()
             return HttpResponseRedirect("/loginRegister")
+    #     if ps!=ps1:
+    #         # messages.error(request,'Password and Confirm Password does not match')
+    #         HttpResponse("Your password is not same")
+    #     else:
+    #         new_user = User.objects.create_user(uname, phone, ps)
+    #         new_user.save()
+    #         return HttpResponseRedirect("/loginRegister")
+    # else:
+    #     formset=CustomerForm()
     else:
-        formset=CustomerForm()
-        return render(request, "register.html", {'formset':formset})
+        formset = SignUpfm()
+
+    return render(request, "register.html", {'formset':formset})
 
 def account(request):
     context = {}

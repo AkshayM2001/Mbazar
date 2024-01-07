@@ -5,13 +5,19 @@
 
 {% block body %}
 <div class="login-form" >
+    
 <form method="POST" class="form signin" novalidate>
     {% csrf_token %}
     <h2 class="heading-lg">Sign In</h2>
-    {{ logset.as_p }}
+    <div class="input-log">
+        {% for logset in logset %}
+            {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br> 
+        {% endfor %}
+    </div>
     <button type="submit">Login</button>
+    
+<p class="register-text">Not account yet?!!! <a href="Register" class="register">Register</a></p>   
 </form>
-<p class="register-text">Not account yet <a href="Register" class="register">Register</a></p>
 </div>
 
 {% endblock %}
