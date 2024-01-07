@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from .form import LoginForm
 from .form import SignUpfm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from .form import LoginForm
+# from django.shortcuts import render, redirect
+# from django.contrib import auth
+# from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-@login_required(login_url='/home')
+# @login_required(login_url='/home')
 
 def home(request):
     context = {}
@@ -24,17 +27,14 @@ def loginRegister(request):
     if request.method == 'POST':
         logset = LoginForm(request.POST)
 
-        # if logset.is_valid(): 
-        #     logset.save()
-        #     return HttpResponseRedirect("/loginRegister")
-        uname = request.POST.get('username')
-        # mail = request.POST.get('email')
-        # # phone = request.POST.get('mobile')
-        ps = request.POST.get('password')
-        # # ps1 = request.POST.get('password1')
-        userA = authenticate(request, username = uname, password = ps)
-        if userA is not None:
-            login(request, userA)
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        user = authenticate(request, username = username, password1 = password1)
+        print('user authenticated')
+        if user is not None:
+            print('user is valid')
+            login(request, user)
+            print('user loged')
             return HttpResponseRedirect('/home')
             
     else:

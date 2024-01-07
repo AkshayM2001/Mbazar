@@ -11,7 +11,7 @@
     <h2 class="heading-lg">Sign In</h2>
     <div class="input-log">
         {% for logset in logset %}
-            {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br> 
+            {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br>
         {% endfor %}
     </div>
     <button type="submit">Login</button>
