@@ -7,13 +7,13 @@ from .form import LoginForm
 # from django.contrib import auth
 # from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth import login
 from django.contrib.auth import authenticate,login,logout
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-# @login_required(login_url='/home')
+@login_required(login_url='home')
 
 def home(request):
     context = {}
@@ -23,23 +23,39 @@ def shop(request):
     context = {}
     return render(request, "shop.html", context)
 
+
 def loginRegister(request):
-    if request.method == 'POST':
+    if request.method == 'POST': # If the form has been submitted...
         logset = LoginForm(request.POST)
 
         username = request.POST['username']
         password1 = request.POST['password1']
         user = authenticate(request, username = username, password1 = password1)
-        print('user authenticated')
-        if user is not None:
-            print('user is valid')
-            login(request, user)
-            print('user loged')
+        if not user is None: 
+            print(username)
+            login(request,user)
             return HttpResponseRedirect('/home')
-            
     else:
         logset = LoginForm()
-    return render(request, "login-resister.html", {'logset':logset})
+        return render(request, "login-resister.html", {'logset':logset})
+
+# def loginRegister(request):
+#     if request.method == 'POST':
+#         logset = LoginForm(request.POST)
+
+#         username = request.POST['username']
+#         password1 = request.POST['password1']
+#         user = authenticate(request, username = username, password1 = password1)
+#         print('user authenticated')
+#         if user is not None :
+#             print('user is valid')
+#             login(request, user)
+#             print('user loged')
+#             return HttpResponseRedirect('home')
+            
+#     else:
+#         logset = LoginForm()
+#     return render(request, "login-resister.html", {'logset':logset})
 
 def Logout(request):
     logout(request)

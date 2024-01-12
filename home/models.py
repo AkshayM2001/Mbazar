@@ -11,11 +11,11 @@ class Customer(models.Model):
 
 
 class Login(models.Model):
-    username = models.CharField(max_length = 30)
+    username = models.CharField(max_length = 30, unique = True)
     # email = models.EmailField()
     # mobile = models.IntegerField()
-    password = models.CharField(max_length = 10)
-    password1 = models.CharField(max_length = 10)
+    password = models.CharField(max_length = 10, unique = True)
+    password1 = models.CharField(max_length = 10, unique = True)
 
     def __str__(self):
         return self.name
