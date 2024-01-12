@@ -1,4 +1,3 @@
-from typing import Any
 from django.forms import ModelForm
 from .models import Customer
 from .models import Login
@@ -11,16 +10,16 @@ from django.contrib.auth.forms import UserCreationForm
 #         model = Customer
 #         fields = ['name', 'mobile', 'password', 'password1']
         
-class LoginForm(UserCreationForm):
-    def __init__(self, *args, **kwargs):
-       super(LoginForm, self).__init__(*args, **kwargs)
+#class LoginForm(UserCreationForm):
+ #   def __init__(self, *args, **kwargs):
+  #     super(LoginForm, self).__init__(*args, **kwargs)
     #    del self.fields['password1']
-       del self.fields['password2']
+ #      del self.fields['password2']
 
-    class Meta:
-        model = User
+ #   class Meta:
+#        model = User
 #         fields = ['name', 'mobile', 'password', 'password1']
-        fields = ['username', 'password1']
+#        fields = ['username', 'password1']
         # labels = {'email': 'Email'}
         # exclude = ['password2']
 
