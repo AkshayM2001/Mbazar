@@ -736,54 +736,31 @@ input {
 
 /*=============================================== LOGIN/ REGISTER =============================================*/
 
-
-.login-form {
+.body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    padding: 1rem;
-    /* border: 1px solid red; */
-    background-color: rgba(255, 255, blue, alpha);
+}
+.wrapper {
+    width: 25rem;
+    background-color: blueviolet;
+    color: white;
 }
 
-.form {
-    border: 1px solid red;
-    padding: 2rem 0;
-    width: 29%;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(74, 72, 72, 0.1);
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    flex-direction: column;
-    gap: .5rem;
-}
-.heading-lg {
-    font-size: var(--h2-font-size);
+.wrapper h1 {
+    text-align: center;
+    font-size: var(--h1-font-size);
 }
 
-.form .input-log p {
-    /* margin: 1rem 0; */
-    font-size: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    /* padding: 1rem; */
+.wrapper .input-box {
+    width: 100%;
+    height: 2rem;
+    /* align-items: center; */
 }
-.form .input-log p input {
-    border: 1px solid var(--border-color-alt);
-    padding-inline: 1rem;
-    height: 40px;
-    width: 130%;
-    border-radius: .25rem;
-    font-size: var(--small-font-size);
-    transform: translateX(-20px);
+.wrapper .input-box input {
+    border: 1px solid yellowgreen;
 }
 
-
-/* .form .input-log p label {
-    margin-bottom: 1rem;
-} */
 
 .form button {
     display: inline-block;

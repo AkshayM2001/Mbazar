@@ -2,22 +2,42 @@
 {% load static %}
 {% block title %}SignIn{% endblock %}
 
-
 {% block body %}
-<div class="login-form">
+<div class="body">
+    <div class="wrapper">
+        <form method="POST" class="form signin" novalidate>
+            {% csrf_token %}
+            <h1 class="heading-lg">Sign In</h1>
+            <!-- {% comment %} {% for logset in logset %}
+                {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br>
+            {% endfor %} {% endcomment %} -->
+            <div class="input-box">
+                <input type="text" name="username1" maxlength="150" autofocus required id="id_username_in">
+                <i class="fi fi-rs-user"></i>
+            </div>
+    
+            <div class="input-box">
+                <input type="password" name="password11" autocomplete="new-password" required id="id_password">
+                <i class="fi fi-rs-lock"></i>
+                <i class="fi fi-rs-eye"></i>
+                <i class="fi fi-rs-crossed-eye"></i>                
+                <!-- <input type="checkbox" name="checkbox" id="pass_checkbox"> -->
+            </div>
+    
+            <div class="rember-forgot">
+                <lable><input type="checkbox">Remember Me!!</lable>
+                <a href="#">Forgot password</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
+    
+            <div class="register-link">
+                <p class="register-text">Not account yet?!!! <a href="Register" class="register">Register</a></p>
+            </div>
+        </form>
+    </div>
 
-    <form method="POST" class="form signin" novalidate>
-        {% csrf_token %}
-        <h2 class="heading-lg">Sign In</h2>
-        <!-- {% comment %} {% for logset in logset %}
-            {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br>
-        {% endfor %} {% endcomment %} -->
-        Username <input type="text" name="username" maxlength="150" autofocus required id="id_username_in">
 
-        Password <input type="password" name="password1" autocomplete="new-password" required id="id_password">
-        <button type="submit">Login</button>
-        <p class="register-text">Not account yet?!!! <a href="Register" class="register">Register</a></p>
-    </form>
+    
 </div>
 
 {% endblock %}

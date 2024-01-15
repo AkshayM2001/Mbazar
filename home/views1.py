@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from .form import LoginForm
 from .form import SignUpfm
 from django.contrib.auth.forms import AuthenticationForm
-from .form import LoginForm
 # from django.shortcuts import render, redirect
 # from django.contrib import auth
 # from django.contrib import messages
@@ -25,19 +23,20 @@ def shop(request):
 
 
 def loginRegister(request):
-    if request.method == 'POST': # If the form has been submitted...
-        logset = LoginForm(request.POST)
+    return render(request, "login-resister.html")
+    # if request.method == 'POST': # If the form has been submitted...
+    #     logset = LoginForm(request.POST)
 
-        username = request.POST['username']
-        password1 = request.POST['password1']
-        user = authenticate(request, username = username, password1 = password1)
-        if not user is None: 
-            print(username)
-            login(request,user)
-            return HttpResponseRedirect('/home')
-    else:
-        logset = LoginForm()
-        return render(request, "login-resister.html", {'logset':logset})
+    #     username = request.POST['username']
+    #     password1 = request.POST['password1']
+    #     user = authenticate(request, username = username, password1 = password1)
+    #     if not user is None: 
+    #         print(username)
+    #         login(request,user)
+    #         return HttpResponseRedirect('/home')
+    # else:
+    #     logset = LoginForm()
+    #     return render(request, "login-resister.html", {'logset':logset})
 
 # def loginRegister(request):
 #     if request.method == 'POST':
