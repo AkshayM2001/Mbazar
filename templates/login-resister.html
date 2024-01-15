@@ -1,43 +1,65 @@
-{% extends "base.html" %}
 {% load static %}
-{% block title %}SignIn{% endblock %}
-
-{% block body %}
-<div class="body">
-    <div class="wrapper">
-        <form method="POST" class="form signin" novalidate>
-            {% csrf_token %}
-            <h1 class="heading-lg">Sign In</h1>
-            <!-- {% comment %} {% for logset in logset %}
-                {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br>
-            {% endfor %} {% endcomment %} -->
-            <div class="input-box">
-                <input type="text" name="username1" maxlength="150" autofocus required id="id_username_in">
-                <i class="fi fi-rs-user"></i>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+       <!--  ================ FAVICON ================= */  -->
+       <link rel='stylesheet' 
+       href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
     
-            <div class="input-box">
-                <input type="password" name="password11" autocomplete="new-password" required id="id_password">
-                <i class="fi fi-rs-lock"></i>
-                <i class="fi fi-rs-eye"></i>
-                <i class="fi fi-rs-crossed-eye"></i>                
-                <!-- <input type="checkbox" name="checkbox" id="pass_checkbox"> -->
-            </div>
+       <!--  ================ SWIPER CSS ================= */  -->
+       <link rel="stylesheet"
+       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+       
     
-            <div class="rember-forgot">
-                <lable><input type="checkbox">Remember Me!!</lable>
-                <a href="#">Forgot password</a>
-            </div>
-            <button type="submit" class="btn">Login</button>
+       <!--  ================ CSS ================= */  -->
+       <link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
     
-            <div class="register-link">
-                <p class="register-text">Not account yet?!!! <a href="Register" class="register">Register</a></p>
-            </div>
-        </form>
+    </head>
+</head>
+<body>
+    <div class="body">
+        <div class="wrapper">
+            <form method="POST" class="form signin" novalidate>
+                {% csrf_token %}
+                <h1 class="heading-lg">Sign In</h1>
+                <!-- {% comment %} {% for logset in logset %}
+                    {{logset.label}} {{logset}} {{logset.errors|striptags}} <br> <br>
+                {% endfor %} {% endcomment %} -->
+                <div class="input-box">
+                    <input type="text" name="username1" maxlength="150" autofocus required id="id_username_in" placeholder="Username">
+                    <i class="fi fi-rs-user"></i>
+                </div>
+        
+                <div class="input-box">
+                    <input type="password" name="password11" autocomplete="new-password" required id="id_password" placeholder="Password">
+                    <i class="fi fi-rs-lock"></i>
+                    <div class="show-pass">
+                        <i class="fi fi-rs-eye"></i>
+                        <i class="fi fi-rs-crossed-eye"></i> 
+                    </div>               
+                    <!-- <input type="checkbox" name="checkbox" id="pass_checkbox"> -->
+                </div>
+        
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember Me!!
+                        <a href="#">Forgot password</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn">Login</button>
+        
+                <div class="register-link">
+                    <p>Not account yet?!!! <a href="Register">Register</a></p>
+                </div>
+            </form>
+        </div>
     </div>
-
-
     
-</div>
+</body>
+</html>
 
-{% endblock %}
+
